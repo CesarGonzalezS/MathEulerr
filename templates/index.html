@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método de Euler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"], button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora del Método de Euler</h1>
+        <form action="/" method="post">
+            <label for="funcion">Función dy/dx (f(x, y) = ):</label>
+            <input type="text" id="funcion" name="funcion" required>
+
+            <label for="solucion_exacta">Solución exacta (opcional para calcular el error):</label>
+            <input type="text" id="solucion_exacta" name="solucion_exacta">
+            <button type="button" id="toggleSolucionExacta">Activar/Desactivar Solución Exacta</button>
+
+            <label for="x0">Valor inicial x (x0):</label>
+            <input type="number" id="x0" name="x0" required>
+
+            <label for="y0">Valor inicial y (y0):</label>
+            <input type="number" id="y0" name="y0" required>
+
+            <label for="h">Tamaño del paso (h):</label>
+            <input type="number" id="h" name="h" step="any" required>
+
+            <label for="iteraciones">Número de iteraciones:</label>
+            <input type="number" id="iteraciones" name="iteraciones" required>
+
+            <input type="submit" value="Calcular">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('toggleSolucionExacta').addEventListener('click', function() {
+            var input = document.getElementById('solucion_exacta');
+            input.disabled = !input.disabled;  // Toggle the disabled state
+            if (input.disabled) {
+                input.value = '';  // Clear the input if it's disabled
+            }
+        });
+    </script>
+</body>
+</html>
